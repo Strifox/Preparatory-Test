@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -10,36 +11,171 @@ namespace Preparatory_Test
 
         static void Main(string[] args)
         {
+            Program p = new Program();
 
+
+
+            bool exit = true;
+
+            do
+            {
+                Console.Clear();
+
+                Console.WriteLine("Type the number of your menu selection and hit enter:");
+                Console.WriteLine("1: Hello world");
+                Console.WriteLine("2: Enter user info");
+                Console.WriteLine("3: Change console text to green, enter the selection again to change back");
+                Console.WriteLine("4: Show current date");
+                Console.WriteLine("5: Return highest entered number");
+                Console.WriteLine("6: Guess the number");
+                Console.WriteLine("7: Save file");
+                Console.WriteLine("8: Read file");
+                Console.WriteLine("9: Calculates the square root, square 2 and square 10 of your input");
+                Console.WriteLine("10: Multiplication Table");
+                Console.WriteLine("11: Create two arrays");
+                Console.WriteLine("12: Enter a palindrome word");
+                Console.WriteLine("13: Check the numbers between two inputs");
+                Console.WriteLine("14: Sort your numbers between odd and even numbers");
+                Console.WriteLine("15: Sum your input");
+                Console.WriteLine("16: Set your character name and the enemy character name");
+                Console.WriteLine("0: Enter 0 to exit\n");
+
+                switch (Convert.ToInt32(Console.ReadLine()))
+                {
+
+                    case 1:
+                        Console.Clear();
+                        p.HelloWorld();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        p.UserInfo();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        p.ChangeConsoleText();
+                        Console.WriteLine("Press any key to return to the menu");
+                        break;
+                    case 4:
+                        Console.Clear();
+                        p.CurrentDate();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 5:
+                        Console.Clear();
+                        p.ReturnHighestNumber();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 6:
+                        Console.Clear();
+                        p.GuessTheNumber();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 7:
+                        Console.Clear();
+                        p.SaveTextToFile();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 8:
+                        Console.Clear();
+                        p.ReadTextFile();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 9:
+                        Console.Clear();
+                        p.CalculateUserInput();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 10:
+                        Console.Clear();
+                        p.WriteMultiplicationTable();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 11:
+                        Console.Clear();
+                        p.CreateTwoArrays();
+                        Console.WriteLine("\nPress any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 12:
+                        Console.Clear();
+                        p.IsPalindrome();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 13:
+                        Console.Clear();
+                        p.ReturnNumbersInbetweenInputs();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 14:
+                        Console.Clear();
+                        p.SortOddAndEvenNumbers();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 15:
+                        Console.Clear();
+                        p.AddInputValues();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 16:
+                        Console.Clear();
+                        p.SetCharacterNames();
+                        Console.WriteLine("Press any key to return to the menu");
+                        Console.ReadKey();
+                        break;
+                    case 0:
+                        exit = false;
+                        break;
+
+                    default:
+                        break;
+                }
+            } while (exit);
         }
 
-        // Returns Hello World to user
+        /// <summary>
+        /// 1. Returns Hello World to user
+        /// </summary>
         public void HelloWorld()
         {
             Console.WriteLine("Hello World");
-            Console.Read();
-
         }
 
-        // Takes the users info and returns the info in one sentence.
+        /// <summary>
+        /// 2. Takes the users info and returns the info in one sentence.
+        /// </summary>
         public void UserInfo()
         {
-            Console.WriteLine("Type your firstname:\n");
+            Console.WriteLine("Type your firstname:");
             string firstname = Console.ReadLine();
 
-            Console.WriteLine("Type your surname:\n");
+            Console.WriteLine("Type your surname:");
             string surname = Console.ReadLine();
 
-            Console.WriteLine("How old are you?\n");
+            Console.WriteLine("How old are you?");
             int age = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine($"Your name is {firstname} {surname} and you are {age} years old");
-            Console.Read();
+            Console.WriteLine($"\nYour name is {firstname} {surname} and you are {age} years old");
         }
 
-        // Changes the console text to green when called
-        // If method is called again then it switches back
-        // to white text.
+        /// <summary>
+        /// 3. Changes the console text to green and switches back if called again
+        /// </summary>
         public void ChangeConsoleText()
         {
             if (!IsTextChanged)
@@ -54,14 +190,17 @@ namespace Preparatory_Test
             }
         }
 
-        // Returns current date
+        /// <summary>
+        /// 4. Writes current date
+        /// </summary>
         public void CurrentDate()
         {
             Console.WriteLine(DateTime.Now);
-            Console.Read();
         }
 
-        // Returns users highest input
+        /// <summary>
+        /// 5. Writes users highest input
+        /// </summary>
         public void ReturnHighestNumber()
         {
             Console.WriteLine("Type a number");
@@ -70,17 +209,17 @@ namespace Preparatory_Test
             int inputTwo = Convert.ToInt32(Console.ReadLine());
 
             if (inputOne > inputTwo)
-                Console.WriteLine(inputOne);
+                Console.WriteLine("Highest number\n" + inputOne);
             else
-                Console.WriteLine(inputTwo);
-
-            Console.Read();
+                Console.WriteLine("Highest number\n" + inputTwo);
         }
 
-        // Generates a random number between 1-100
-        // which the user should guess.
-        // If the users guessed right then it will tell how
-        // many times the user guessed before getting it right.
+        /// <summary>
+        /// 6. Generates a random number between 1-100
+        /// which the user should guess.
+        /// If the users guessed right then it will tell how
+        /// many times the user guessed before getting it right.
+        /// </summary>
         public void GuessTheNumber()
         {
             var rnd = new Random();
@@ -89,25 +228,35 @@ namespace Preparatory_Test
             int input;
 
             Console.WriteLine("Guess the number, type a number between 1-100");
+            // do-while loop if random number does not match input
             do
             {
                 input = Convert.ToInt32(Console.ReadLine());
+
                 if (input != randomNumber)
                 {
+                    // Incrementing amount of user tries
                     amountOfTries++;
+
+                    // Checks if the user input is higher or lower than
+                    // the random generated number
                     if (input > randomNumber)
+                        // Tells the user to guess lower
                         Console.WriteLine("Wrong! Guess lower");
                     else
+                        // Tells the user to guess higher
                         Console.WriteLine("Wrong! Guess higher");
                 }
 
             } while (randomNumber != input);
 
+            // Writes this when the user answered right
             Console.WriteLine($"You guessed right! The right answer is {randomNumber} and you guessed {input}. It took {amountOfTries} tries");
-            Console.Read();
         }
 
-        // Saves the user input in a text file in the users documents folder.
+        /// <summary>
+        /// 7. Saves the user input in a text file in the users documents folder.
+        /// </summary>
         public void SaveTextToFile()
         {
             Console.WriteLine("Type something to save it into your harddrive");
@@ -116,24 +265,26 @@ namespace Preparatory_Test
             File.WriteAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\UserInput.txt", Console.ReadLine());
 
             Console.WriteLine($"You have now saved the text in Userinput.txt file which can be found at {Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}");
-            Console.Read();
         }
 
-        // Read the text file created from the method SaveTextToFile()
+        /// <summary>
+        /// 8. Read the text file created from the method SaveTextToFile()
+        /// </summary>
         public void ReadTextFile()
         {
             // Return which text file is being read.
             Console.WriteLine($"Current text in {Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\UserInput.txt");
             // Returns the content from the textfile.
             Console.WriteLine(File.ReadAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\UserInput.txt"));
-            Console.Read();
         }
 
-        // Calculates and returns 3 different values of the users input
+        /// <summary>
+        /// 9. Calculates and returns 3 different values of the users input
+        /// </summary>
         public void CalculateUserInput()
         {
             Console.WriteLine("Type a decimal number");
-            var userInput = Convert.ToDouble(Console.ReadLine());
+            var userInput = Convert.ToDouble(Console.ReadLine(), CultureInfo.InvariantCulture);
 
             // Square root of user input
             Console.WriteLine("Square Root: " + Math.Sqrt(Convert.ToDouble(userInput)));
@@ -141,10 +292,11 @@ namespace Preparatory_Test
             Console.WriteLine(userInput + "^2: " + Math.Pow(userInput, 2));
             // User input square 10
             Console.WriteLine(userInput + "^10: " + Math.Pow(userInput, 10));
-            Console.Read();
         }
 
-        // Writes Multiplication Table from 1-10
+        /// <summary>
+        /// 10. Writes Multiplication Table from 1-10
+        /// </summary>
         public void WriteMultiplicationTable()
         {
             // First for-loop determines which multiplication
@@ -162,10 +314,11 @@ namespace Preparatory_Test
                 }
                 Console.WriteLine();
             }
-            Console.Read();
         }
 
-        // Creates two arrays with random numbers where one is sorted and the other is not.
+        /// <summary>
+        /// 11. Creates two arrays with random numbers where one is sorted and the other is not.
+        /// </summary>
         public void CreateTwoArrays()
         {
             var rnd = new Random();
@@ -184,10 +337,24 @@ namespace Preparatory_Test
             // Sorts the second array
             Array.Sort(arrayTwo);
 
+            Console.WriteLine("\nRandom generated numbers in array:\n");
+            foreach (var num in arrayOne)
+            {
+                Console.Write($"{num}\t");
+            }
+
+            Console.WriteLine("\nSorted numbers from other array:\n");
+            foreach (var num in arrayTwo)
+            {
+                Console.Write($"{num}\t");
+            }
         }
 
-        // Checks if input is a palindrome
-        public bool IsPalindrome()
+        /// <summary>
+        /// 12. Checks if input is a palindrome
+        /// </summary>
+        /// <returns>True if a palindrome</returns>
+        public void IsPalindrome()
         {
             Console.WriteLine("Enter a Palindrome");
             var input = Console.ReadLine().ToLower();
@@ -197,13 +364,17 @@ namespace Preparatory_Test
             var reversed = new string(charArray.ToArray());
 
             if (input == reversed)
-                return true;
-
-            return false;
+            {
+                Console.WriteLine("Your word is a palindrome: " + reversed);
+            }
+            else
+                Console.WriteLine("Your word is not a palindome, reversed word: " + reversed);
         }
 
-        // 13. Function that takes two inputs and returns the values between the two inputs. Starting from the lowest one
-        public void ReturnInputNumbers()
+        /// <summary>
+        /// 13. Function that takes two inputs and returns the values between the two inputs. Starting from the lowest one
+        /// </summary>
+        public void ReturnNumbersInbetweenInputs()
         {
             Console.WriteLine("Type a number");
             var inputOne = Convert.ToInt32(Console.ReadLine());
@@ -247,7 +418,9 @@ namespace Preparatory_Test
             }
         }
 
-        // 14. Splits and returns the input value between odd and even numbers
+        /// <summary>
+        /// 14. Splits and returns the input value between odd and even numbers
+        /// </summary>
         public void SortOddAndEvenNumbers()
         {
             Console.WriteLine("Enter a few numbers separated by comma");
@@ -275,29 +448,28 @@ namespace Preparatory_Test
                     // Writes the odd numbers
                     Console.Write(oddNumber.Trim() + "\t");
             }
-
-            Console.Read();
-
         }
 
-        // 15. Adds the user inputs and returns the sum
+        /// <summary>
+        /// 15. Adds the user inputs and returns the sum
+        /// </summary>
         public void AddInputValues()
         {
             Console.WriteLine("Enter a few numbers separated by comma");
             var input = Console.ReadLine();
             // Splits the input at commas and trims it from whitespaces
             var inputSplitted = input.Trim().Split(',');
-            
+
             // Converts the input array to int array
             var intArray = Array.ConvertAll(inputSplitted, int.Parse);
 
             // Writes the sum of the int array
             Console.WriteLine(intArray.Sum());
-            Console.Read();
-
         }
 
-        // 16. User sets the name of his and the enemy character. Health, strength and luck is random generated.
+        /// <summary>
+        /// 16. User sets the name of his and the enemy character. Health, strength and luck is random generated.
+        /// </summary>
         public void SetCharacterNames()
         {
             // User and Enemy character instances
@@ -324,6 +496,9 @@ namespace Preparatory_Test
             userCharacter.Health = rnd.Next(minValue, maxValue);
             userCharacter.Strength = rnd.Next(minValue, maxValue);
             userCharacter.Luck = rnd.Next(minValue, maxValue);
+
+            Console.WriteLine($"\nYour character name: {userCharacter.Name} \nHealth: {userCharacter.Health}\nStrength: {userCharacter.Strength}\nLuck: {userCharacter.Luck}");
+            Console.WriteLine($"\nYour character name: {enemyCharacter.Name} \nHealth: {enemyCharacter.Health}\nStrength: {enemyCharacter.Strength}\nLuck: {enemyCharacter.Luck}");
 
         }
     }
